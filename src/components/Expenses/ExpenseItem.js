@@ -9,14 +9,26 @@ const ExpenseItem = (props) => {
     locationOfExpenditure,
     onDelete,
   } = props;
-  
+
+  const [title, setTitle] = useState(props.ExpenseTitle);
+  const clickHandler = () => {
+    setTitle("Updated!!");
+  };
+
+  const [amount, setAmount] = useState(props.ExpenseAmount);
+  const expenseHandler = () => {
+    setAmount("$100")
+  }
+
   return (
     <div className="expense-item">
-      <h3>{ExpenseTitle}</h3>
-      <p>Amount: {ExpenseAmount}</p>
+      <h3>{title}</h3>
+      <p>Amount: {amount}</p>
+      <button onClick={expenseHandler}>Update</button>
       <p>Date: {ExpenseDate.toDateString()}</p>
       <p>Location: {locationOfExpenditure}</p>
       <button onClick={onDelete}>Delete</button>
+      <button onClick={clickHandler}>Change title</button>
     </div>
   );
 };
