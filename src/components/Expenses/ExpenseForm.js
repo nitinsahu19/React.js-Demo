@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
+import NewExpense from "./NewExpense";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   // const getTitle = (event) =>  {
   //         console.log(event.target.value)
   //     }
@@ -26,7 +27,7 @@ const ExpenseForm = () => {
       ...userInput,
       enteredTitle: event.target.value,
     });
-    console.log(userInput.enteredTitle);
+    // console.log(userInput.enteredTitle);
   };
 
   const amountHandler = (event) => {
@@ -37,7 +38,7 @@ const ExpenseForm = () => {
       ...userInput,
       enteredAmount: event.target.value,
     });
-    console.log(userInput.enteredAmount);
+    // console.log(userInput.enteredAmount);
   };
 
   const dateHandler = (event) => {
@@ -48,7 +49,7 @@ const ExpenseForm = () => {
       ...userInput,
       entereDate: event.target.value,
     });
-    console.log(userInput.entereDate);
+    // console.log(userInput.entereDate);
   };
 
   const locationHandler = (event) => {
@@ -59,7 +60,7 @@ const ExpenseForm = () => {
       ...userInput,
       enteredLocation: event.target.value,
     });
-    console.log(userInput.enteredLocation);
+    // console.log(userInput.enteredLocation);
   };
 
   const submitHandler = (event) => {
@@ -70,7 +71,14 @@ const ExpenseForm = () => {
       date: new Date(userInput.entereDate),
       location: userInput.enteredLocation,
     };
-    console.log(expenseData);
+
+    props.onSaveExpenseData(expenseData);
+    setUserInput({
+      enteredTitle: "",
+      enteredAmount: "",
+      entereDate: "",
+      enteredLocation: "",
+    });
   };
 
   return (
@@ -82,6 +90,7 @@ const ExpenseForm = () => {
           name="title"
           id="title"
           className="expense-input"
+          value={userInput.enteredTitle}
           onChange={titleHandler}
         />
       </label>
@@ -92,6 +101,7 @@ const ExpenseForm = () => {
           name="amount"
           id="amount"
           className="expense-input"
+          value={userInput.enteredAmount}
           onChange={amountHandler}
         />
       </label>
@@ -102,6 +112,7 @@ const ExpenseForm = () => {
           name="date"
           id="date"
           className="expense-input"
+          value={userInput.entereDate}
           onChange={dateHandler}
         />
       </label>
@@ -112,6 +123,7 @@ const ExpenseForm = () => {
           name="location"
           id="location"
           className="expense-input"
+          value={userInput.enteredLocation}
           onChange={locationHandler}
         />
       </label>

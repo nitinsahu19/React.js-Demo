@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 // import ExpenseDate from "./components/Expenses/ExpenseDate";
-
+import NewExpense from "./components/Expenses/NewExpense";
 
 const App = () => {
   const [expenses, setExpenses] = useState([
@@ -42,6 +42,14 @@ const App = () => {
     },
   ]);
 
+  const addEventHandler = (expense) => {
+    console.log("In App.js");
+    // console.log(expense);
+    const newArr = [...expenses, expense];
+    setExpenses(newArr);
+    console.log(expenses);
+  };
+
   const deleteExpenseHandler = (id) => {
     const updatedExpenses = expenses.filter((expense) => expense.id !== id);
     setExpenses(updatedExpenses);
@@ -60,6 +68,7 @@ const App = () => {
           onDelete={() => deleteExpenseHandler(expense.id)}
         />
       ))}
+      <NewExpense onAddExpense={addEventHandler} />
     </div>
   );
 };
