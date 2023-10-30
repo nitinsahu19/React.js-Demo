@@ -7,6 +7,6 @@ import ExpenseForm from "./components/Expenses/ExpenseForm";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <div>
-    [<App />, < ExpenseForm /> ]
+    <App /> < ExpenseForm /> 
   </div>
 );

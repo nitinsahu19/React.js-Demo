@@ -6,33 +6,75 @@ const ExpenseForm = () => {
   //         console.log(event.target.value)
   //     }
 
-  const [title, setTitle] = useState(" ");
-  const [amount, setamount] = useState(" ");
-  const [date, setdate] = useState(" ");
-  const [location, setlocation] = useState(" ");
+  // const [title, setTitle] = useState(" ");
+  // const [amount, setamount] = useState(" ");
+  // const [date, setdate] = useState(" ");
+  // const [location, setlocation] = useState(" ");
+
+  const [userInput, setUserInput] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    entereDate: "",
+    enteredLocation: "",
+  });
 
   const titleHandler = (event) => {
-    setTitle(event.target.value);
-    console.log(title);
+    // setTitle(event.target.value);
+    // console.log(title);
+
+    setUserInput({
+      ...userInput,
+      enteredTitle: event.target.value,
+    });
+    console.log(userInput.enteredTitle);
   };
 
   const amountHandler = (event) => {
-    setamount(event.target.value);
-    console.log(amount)
+    // setamount(event.target.value);
+    // console.log(amount);
+
+    setUserInput({
+      ...userInput,
+      enteredAmount: event.target.value,
+    });
+    console.log(userInput.enteredAmount);
   };
 
   const dateHandler = (event) => {
-    setdate(event.target.value);
-    console.log(date)
+    // setdate(event.target.value);
+    // console.log(date);
+
+    setUserInput({
+      ...userInput,
+      entereDate: event.target.value,
+    });
+    console.log(userInput.entereDate);
   };
 
   const locationHandler = (event) => {
-    setlocation(event.target.value);
-    console.log(location)
+    // setlocation(event.target.value);
+    // console.log(location);
+
+    setUserInput({
+      ...userInput,
+      enteredLocation: event.target.value,
+    });
+    console.log(userInput.enteredLocation);
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const expenseData = {
+      title: userInput.enteredTitle,
+      amount: userInput.enteredAmount,
+      date: new Date(userInput.entereDate),
+      location: userInput.enteredLocation,
+    };
+    console.log(expenseData);
   };
 
   return (
-    <form className="expense-form-container">
+    <form onSubmit={submitHandler} className="expense-form-container">
       <label htmlFor="" className="expense-label">
         Expense title:
         <input
@@ -73,9 +115,7 @@ const ExpenseForm = () => {
           onChange={locationHandler}
         />
       </label>
-      <button type="button" className="add-expense-button">
-        Add Expense
-      </button>
+      <button className="add-expense-button">Add Expense</button>
     </form>
   );
 };
