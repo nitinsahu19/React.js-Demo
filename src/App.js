@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 // import ExpenseDate from "./components/Expenses/ExpenseDate";
 import NewExpense from "./components/Expenses/NewExpense";
+import Expenses from "./components/Expenses/Expenses";
+import ExpenseFilter from "./components/Expenses/ExpenseFilter";
 
 const App = () => {
   const [expenses, setExpenses] = useState([
@@ -55,19 +57,20 @@ const App = () => {
     setExpenses(updatedExpenses);
   };
 
+  const [filteredYear, setFilteredYear] = useState("2020");
+
+  const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
+  };
+
   return (
     <div>
       <h2>Expense Tracker</h2>
-      {expenses.map((expense) => (
-        <ExpenseItem
-          key={expense.id}
-          ExpenseTitle={expense.title}
-          ExpenseAmount={expense.amount}
-          ExpenseDate={expense.date}
-          locationOfExpenditure={expense.location}
-          onDelete={() => deleteExpenseHandler(expense.id)}
-        />
-      ))}
+      <ExpenseFilter
+        selected={filteredYear}
+        onChangeFilter={filterChangeHandler}
+      />
+      <Expenses items={expenses} onDelete={deleteExpenseHandler} />
       <NewExpense onAddExpense={addEventHandler} />
     </div>
   );

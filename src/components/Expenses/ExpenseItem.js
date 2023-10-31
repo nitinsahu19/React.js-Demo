@@ -33,10 +33,10 @@ const ExpenseItem = (props) => {
 
   return (
     <div className="expense-item">
-      <ExpenseFilter
+      {/* <ExpenseFilter
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
-      />
+      /> */}
       <h3>{title}</h3>
       <p>Amount: {amount}</p>
       <button onClick={expenseHandler}>Update</button>
