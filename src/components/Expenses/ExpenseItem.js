@@ -4,6 +4,7 @@ import Card from "../UI/Card";
 import ExpenseDate from "./ExpenseDate";
 // import ExpenseDetails from "./ExpenseDetails";
 import ExpenseForm from "./ExpenseForm";
+import ExpenseFilter from "./ExpenseFilter";
 
 const ExpenseItem = (props) => {
   const {
@@ -24,16 +25,26 @@ const ExpenseItem = (props) => {
     setAmount("$100");
   };
 
+  const [filteredYear, setFilteredYear] = useState("2020");
+
+  const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
+  };
+
   return (
-      <div className="expense-item">
-        <h3>{title}</h3>
-        <p>Amount: {amount}</p>
-        <button onClick={expenseHandler}>Update</button>
-        <p>Date: {ExpenseDate.toDateString()}</p>
-        <p>Location: {locationOfExpenditure}</p>
-        <button onClick={onDelete}>Delete</button>
-        <button onClick={clickHandler}>Change title</button>
-      </div>
+    <div className="expense-item">
+      <ExpenseFilter
+        selected={filteredYear}
+        onChangeFilter={filterChangeHandler}
+      />
+      <h3>{title}</h3>
+      <p>Amount: {amount}</p>
+      <button onClick={expenseHandler}>Update</button>
+      <p>Date: {ExpenseDate.toDateString()}</p>
+      <p>Location: {locationOfExpenditure}</p>
+      <button onClick={onDelete}>Delete</button>
+      <button onClick={clickHandler}>Change title</button>
+    </div>
   );
 };
 
