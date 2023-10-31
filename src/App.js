@@ -45,11 +45,11 @@ const App = () => {
   ]);
 
   const addEventHandler = (expense) => {
-    console.log("In App.js");
+    // console.log("In App.js");
     // console.log(expense);
-    const newArr = [...expenses, expense];
+    const newArr = [expense, ...expenses];
     setExpenses(newArr);
-    console.log(expenses);
+    console.log(newArr);
   };
 
   const deleteExpenseHandler = (id) => {
