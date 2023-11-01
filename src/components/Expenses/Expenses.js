@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import ExpenseItem from "./ExpenseItem";
+// import ExpenseItem from "./ExpenseItem";
 import ExpenseFilter from "./ExpenseFilter";
+import ExpensesList from './ExpensesList'
 // import App from "../../App";
 
 const Expenses = (props) => {
@@ -15,33 +16,13 @@ const Expenses = (props) => {
   console.log(filteredExpenses);
   // console.log(props.items)
 
-  let expensesContent = <p>No expenses found.</p>;
-  if (filteredExpenses.length > 0) {
-    expensesContent = filteredExpenses.map((expense) => (
-      <ExpenseItem
-        key={expense.id}
-        ExpenseTitle={expense.title}
-        ExpenseAmount={expense.amount}
-        ExpenseDate={expense.date}
-        locationOfExpenditure={expense.location}
-        onDelete={() => props.onDelete(expense.id)}
-      />
-    ));
-    if (filteredExpenses.length === 1) {
-      expensesContent = [
-        ...expensesContent,
-        <p>Only one expense left!! Kindly add more expenses.</p>,
-      ];
-    }
-  }
-
   return (
     <div>
       <ExpenseFilter
         selected={filteredYear}
         onChangeFilter={filterChangeHandler}
       />
-      {expensesContent}
+      <ExpensesList items={filteredExpenses} onDelete={props.onDelete} />
     </div>
   );
 };
