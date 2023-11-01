@@ -15,21 +15,50 @@ const Expenses = (props) => {
   console.log(filteredExpenses);
   // console.log(props.items)
 
+  let expensesContent = <p>No expenses found.</p>;
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        ExpenseTitle={expense.title}
+        ExpenseAmount={expense.amount}
+        ExpenseDate={expense.date}
+        locationOfExpenditure={expense.location}
+        onDelete={() => props.onDelete(expense.id)}
+      />
+    ));
+    if (filteredExpenses.length === 1) {
+      expensesContent = [
+        ...expensesContent,
+        <p>Only one expense left!! Kindly add more expenses.</p>,
+      ];
+    }
+  }
+
   return (
     <div>
-      <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-      {filteredExpenses.map((expense) => (
-        <ExpenseItem
-          key={expense.id}
-          ExpenseTitle={expense.title}
-          ExpenseAmount={expense.amount}
-          ExpenseDate={expense.date}
-          locationOfExpenditure={expense.location}
-          onDelete={() => props.onDelete(expense.id)}
-        />
-      ))}
+      <ExpenseFilter
+        selected={filteredYear}
+        onChangeFilter={filterChangeHandler}
+      />
+      {expensesContent}
     </div>
   );
 };
 
 export default Expenses;
+
+{
+  /* {filteredExpenses.length === 0 && <p>No expense found</p>}
+{filteredExpenses.length > 0 &&
+  filteredExpenses.map((expense) => (
+    <ExpenseItem
+      key={expense.id}
+      ExpenseTitle={expense.title}
+      ExpenseAmount={expense.amount}
+      ExpenseDate={expense.date}
+      locationOfExpenditure={expense.location}
+      onDelete={() => props.onDelete(expense.id)}
+    />
+  ))} */
+}
