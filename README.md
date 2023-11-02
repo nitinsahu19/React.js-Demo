@@ -6,7 +6,7 @@ User-Friendly Interface: The Expense Tracker provides an intuitive and user-frie
 
 Transaction Management: Add, edit, and delete your transactions, and categorize them into income or expense categories.
 
-Expense Categories: Easily categorize your expenses, helping you analyze and track your spending habits.
+Interactive Chart Visualization: Visualize your expenses with dynamic charts and graphs for a clear overview of your spending patterns.
 
 Accessibility and Responsiveness: The app is designed to be accessible to a wide range of users and is responsive on different devices.
 
