@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import ExpenseItem from "./components/Expenses/ExpenseItem";
-// import ExpenseDate from "./components/Expenses/ExpenseDate";
 import NewExpense from "./components/Expenses/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
-import ExpenseFilter from "./components/Expenses/ExpenseFilter";
 
 const App = (props) => {
   const [expenses, setExpenses] = useState([
@@ -82,7 +79,7 @@ const App = (props) => {
       amount: 120.5,
       date: new Date(2022, 10, 20),
       location: "Mumbai",
-      id:11,
+      id: 11,
     },
     {
       title: "Toilet paper",
@@ -113,10 +110,7 @@ const App = (props) => {
       id: 15,
     },
   ]);
-
   const addEventHandler = (expense) => {
-    // console.log("In App.js");
-    // console.log(expense);
     const newArr = [expense, ...expenses];
     setExpenses(newArr);
     console.log(newArr);
@@ -127,19 +121,9 @@ const App = (props) => {
     setExpenses(updatedExpenses);
   };
 
-  // const [filteredYear, setFilteredYear] = useState("2020");
-
-  // const filterChangeHandler = (selectedYear) => {
-  //   setFilteredYear(selectedYear);
-  // };
-
   return (
     <div>
       <h2>Expense Tracker</h2>
-      {/* <ExpenseFilter
-        selected={filteredYear}
-        onChangeFilter={filterChangeHandler}
-      /> */}
       <Expenses items={expenses} onDelete={deleteExpenseHandler} />
       <NewExpense onAddExpense={addEventHandler} />
     </div>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
-import NewExpense from "./NewExpense";
 
 const ExpenseForm = (props) => {
   // const getTitle = (event) =>  {
@@ -82,53 +81,56 @@ const ExpenseForm = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler} className="expense-form-container">
-      <label htmlFor="" className="expense-label">
-        Expense title:
-        <input
-          type="text"
-          name="title"
-          id="title"
-          className="expense-input"
-          value={userInput.enteredTitle}
-          onChange={titleHandler}
-        />
-      </label>
-      <label htmlFor="amount" className="expense-label">
-        Expense amount:
-        <input
-          type="text"
-          name="amount"
-          id="amount"
-          className="expense-input"
-          value={userInput.enteredAmount}
-          onChange={amountHandler}
-        />
-      </label>
-      <label htmlFor="date" className="expense-label">
-        Expense date:
-        <input
-          type="date"
-          name="date"
-          id="date"
-          className="expense-input"
-          value={userInput.entereDate}
-          onChange={dateHandler}
-        />
-      </label>
-      <label htmlFor="location" className="expense-label">
-        Location:
-        <input
-          type="text"
-          name="location"
-          id="location"
-          className="expense-input"
-          value={userInput.enteredLocation}
-          onChange={locationHandler}
-        />
-      </label>
-      <button className="add-expense-button">Add Expense</button>
-    </form>
+    <div>
+      <form onSubmit={submitHandler} className="expense-form-container">
+        <label htmlFor="" className="expense-label">
+          Expense title:
+          <input
+            type="text"
+            name="title"
+            id="title"
+            className="expense-input"
+            value={userInput.enteredTitle}
+            onChange={titleHandler}
+          />
+        </label>
+        <label htmlFor="amount" className="expense-label">
+          Expense amount:
+          <input
+            type="text"
+            name="amount"
+            id="amount"
+            className="expense-input"
+            value={userInput.enteredAmount}
+            onChange={amountHandler}
+          />
+        </label>
+        <label htmlFor="date" className="expense-label">
+          Expense date:
+          <input
+            type="date"
+            name="date"
+            id="date"
+            className="expense-input"
+            value={userInput.entereDate}
+            onChange={dateHandler}
+          />
+        </label>
+        <label htmlFor="location" className="expense-label">
+          Location:
+          <input
+            type="text"
+            name="location"
+            id="location"
+            className="expense-input"
+            value={userInput.enteredLocation}
+            onChange={locationHandler}
+          />
+        </label>
+        <button className="add-expense-button">Submit</button>
+        <button className="add-expense-button" onClick={props.onCancel}>Cancel</button>
+      </form>
+    </div>
   );
 };
 

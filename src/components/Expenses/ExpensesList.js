@@ -1,6 +1,6 @@
-import Expenses from "./Expenses";
 import ExpenseItem from "./ExpenseItem";
-import App from "../../App";
+// import Expenses from "./Expenses";
+// import App from "../../App";
 const ExpensesList = (props) => {
   let expensesContent = <p>No expenses found.</p>;
   if (props.items.length > 0) {
