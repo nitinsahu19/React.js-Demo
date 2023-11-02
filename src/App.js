@@ -5,7 +5,7 @@ import Expenses from "./components/Expenses/Expenses";
 const App = (props) => {
   const [expenses, setExpenses] = useState([
     {
-      title: "Toilet paper",
+      title: "Protein",
       amount: 98.23,
       date: new Date(2020, 7, 14),
       location: "Jaipur",
